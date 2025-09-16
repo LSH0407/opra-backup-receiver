@@ -1,0 +1,6 @@
+﻿* text=auto
+*.cpp text eol=crlf diff=cpp
+*.h   text eol=crlf diff=cpp
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.sh  text eol=lf
