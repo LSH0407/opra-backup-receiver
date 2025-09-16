@@ -36,7 +36,7 @@ int runUdpReceiver(const ReceiverConfig& cfg) {
         return 1;
     }
 #endif
-    int sockfd = static_cast<int>(socket(AF_INET, SOCK_DGRAM, 0));
+    int sockfd = static_cast<int>(socket(AF_INET, SOCK_DGRAM, 0));\n    // enlarge receive buffer for burst traffic\n    { int buf=1<<20; setsockopt(sockfd, SOL_SOCKET, SO_RCVBUF, (char*)&buf, sizeof(buf)); }
     if (sockfd < 0) { std::perror("socket"); return 1; }
 
     int reuse = 1;
@@ -45,7 +45,7 @@ int runUdpReceiver(const ReceiverConfig& cfg) {
     sockaddr_in addr{};
     addr.sin_family = AF_INET;
     addr.sin_port = htons(cfg.port);
-    addr.sin_addr.s_addr = cfg.multicastAddress.empty() ? htonl(INADDR_ANY) : inet_addr(cfg.multicastAddress.c_str());
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     if (bind(sockfd, (sockaddr*)&addr, sizeof(addr)) < 0) {
         std::perror("bind");
@@ -90,3 +90,4 @@ int runUdpReceiver(const ReceiverConfig& cfg) {
 #endif
     return 0;
 }
+
