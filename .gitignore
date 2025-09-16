@@ -1,0 +1,16 @@
+﻿# C/C++
+*.o
+*.obj
+*.exe
+*.log
+/build/
+/bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
