@@ -1,0 +1,1 @@
+﻿#pragma once\n\n#include <string>\n\nstruct ReceiverConfig {\n    std::string multicastAddress;\n    unsigned short port;\n    std::string interfaceAddress;\n};\n\nint runUdpReceiver(const ReceiverConfig& config);\n
